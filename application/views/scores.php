@@ -7,7 +7,11 @@
 			<section class="adminDashboardView" style="width:90%; margin-left:40px; margin-top:0px;">
 				<div>
 						
-					<button id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href='<?=base_url();?>scores/export?file_num=<?php echo $user_file_num;?>&user_id=<?php echo $User[0]['id'];?>' style="width:150px; min-width:inherit; margin-bottom: 2%; margin-left:20px; margin-right:3em;"> Export </button>
+						
+					
+					<a id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>scores/export?file_num=<?php echo $user_file_num;?>&user_id=<?php echo $User[0]['id'];?>" style="width:150px; min-width:inherit; margin-bottom: 2%; margin-right:oem;">Export</a>
+					
+					
 					<button id="btnPrint" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href='<?=base_url();?>' style="width:150px; min-width:inherit; margin-bottom: 2%; margin-left:29px; margin-right:2em;"> Print </button>
 				</div>
 				<div class="background" style="disaplay: none;">

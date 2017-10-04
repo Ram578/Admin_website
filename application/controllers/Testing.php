@@ -70,11 +70,11 @@ class Testing extends CI_Controller {
 		if($filenumber != ""){
 			if($test_type == 'scores') 
 			{
-				redirect('scores?file_num="'.$filenumber.'"', 'refresh');
+				redirect('scores?file_num='.$filenumber, 'refresh');
 			}
 			else
 			{
-				redirect('responses?file_num="'.$filenumber.'"', 'refresh');
+				redirect('responses?file_num='.$filenumber, 'refresh');
 			}
 		} 
 	

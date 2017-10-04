@@ -129,7 +129,7 @@ class Responses extends CI_Controller {
 		//print_r($arrTemp); exit;
 		foreach ($arrTemp as $key => &$value) 
 		{
-			$intScore = $this->adminmodel->FetchPitchUserResult( $user_id);
+			$intScore = $this->adminmodel->FetchPitchUserResult($user_id);
 
 			$value['score'] = $intScore;
 

@@ -9,7 +9,7 @@
 	<div class="login-html">
 		<div class="login testing">
 		
-			<div class="testing">
+			<div class="testing" style="height:100%;background-color:#9e9e9e;">
 			<!-- Testresult Block goes here -->
 				<form class="form-horizontal col-lg-4 col-md-5 col-sm-6 col-xs-6" role="form" id="testapplication" action="testing/test_results" method="POST">
 					<!--h2>testresult Form</h2-->
@@ -62,7 +62,7 @@
 						</div>
 					   <!-- /.form-group -->	
 						<div class="form-group">
-							<button type="submit" id="TesingButton" class="btn btn-primary btn-block" style="background-color: #3F51B5; width: 18em;border-radius: 8px; height: 2em;">Submit</button>
+							<button type="submit" id="TesingButton" class="btn btn-primary btn-block" style="background-color: #3F51B5; width: 18em;border-radius: 4px; height: 2em;">Submit</button>
 						</div>
 					</div>
 				</form>

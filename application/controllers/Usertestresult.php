@@ -15,9 +15,10 @@ class Usertestresult extends CI_Controller {
 		
 		$arrData['type'] = $application_type;
 		
-		// var_dump($application_type);
+		 // var_dump($application_type);
 		
-		$arrData['TestResults'] = $this->adminmodel->FetchResult();
+		// $arrData['TestResults'] = $this->adminmodel->FetchResult();
+		 $arrData['TestResults'] = $this->adminmodel->FetchTestResult($application_type);
 						
 		foreach ($arrData['TestResults'] as $key => &$value) 
 		{
@@ -34,14 +35,16 @@ class Usertestresult extends CI_Controller {
 		 $this->load->view('user_test_result', $arrData);
 	}
 
-	public function export()
-	{
+		public function export()
+		{
 		$this->load->model('adminmodel');
 		
 		$application_type = $_GET['type'];
 		
-		$arrResult = $this->adminmodel->FetchResult();
-		
+		$arrData['type'] = $application_type;
+
+		$arrResult = $this->adminmodel->FetchTestResult($type);
+
 		$arrTemp = array();
 
 		$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7');
@@ -90,12 +93,12 @@ class Usertestresult extends CI_Controller {
 			}
 
 			$arrTempRow = $value;
-			unset($arrTempRow['test_result']);
-			unset($arrTempRow['practice_result']);
-			unset($arrTempRow['active']);
-			unset($arrTempRow['addeddate']);
-			unset($arrTempRow['completeddate']);
-			unset($arrTempRow['status']);
+			// unset($arrTempRow['test_result']);
+			// unset($arrTempRow['practice_result']);
+			// unset($arrTempRow['active']);
+			// unset($arrTempRow['addeddate']);
+			// unset($arrTempRow['completeddate']);
+			// unset($arrTempRow['status']);
 			$arrTemp[] = $arrTempRow;
 		}
 		
@@ -124,7 +127,7 @@ class Usertestresult extends CI_Controller {
 
 			$value['score'] = $intScore;
 
-			$value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender']);
+			$value['certile'] = $this->adminmodel->FetchPitchCertileWRT($intScore, $value['age'], $value['gender']);
 		}
 
 		$arrHeaders[] = 'Score';
@@ -133,7 +136,7 @@ class Usertestresult extends CI_Controller {
 		$arrHeaders = array_unique($arrHeaders);
 		
 		// Enable to download this file
-		$filename = "user_test_result.csv";
+		$filename = "UsersTestResult.csv";
 		 		
 		header("Pragma: public");
 		header("Content-Type: text/plain");

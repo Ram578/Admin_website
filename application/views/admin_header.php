@@ -13,7 +13,7 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<link href="<?//=base_url();?>resources/css/cssBundle.css" rel="stylesheet" />
+		<link href="<?=base_url();?>resources/css/cssBundle.css" rel="stylesheet" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="<?=base_url();?>resources/css/admin.css" rel="stylesheet" />
 		<link href="<?=base_url();?>resources/css/website.css" rel="stylesheet" />

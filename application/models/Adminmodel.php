@@ -227,8 +227,10 @@ class Adminmodel extends CI_Model
 	
 	function fetch_user($file)
 	{
-		$strQuery = 'SELECT * FROM users WHERE filenumber='.$file;
-
+		$strQuery = 'SELECT * FROM users WHERE filenumber = "'.$file.'"';
+		// var_dump($strQuery);
+		// die;
+		
 		$objQuery = $this->db->query($strQuery);
 
 		return $objQuery->result_array();
@@ -327,8 +329,7 @@ class Adminmodel extends CI_Model
 	} 
 
 	function _userResults($id_user)
-	{
-		
+	{	
 		$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM pitch_user_answers ua INNER JOIN pitch_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "test" AND userid = '.$id_user.' ORDER BY q.serial_number';
 
 		$objQuery = $this->db->query($strQuery);
@@ -407,6 +408,7 @@ class Adminmodel extends CI_Model
 				$value['test_result'] = $this->_userResults($value['id']);
 				$value['practice_result'] = $this->_userPracticeResults($value['id']);
 			}
+		
 		/*} elseif($type == "tonal") {
 			foreach ($arrUsers as $key => &$value) 
 			{
@@ -418,10 +420,12 @@ class Adminmodel extends CI_Model
 		return $arrUsers;
 	}
 	
+	
+	
 	function _userPitchResults($user_id)
 	{
 		
-		// $strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM pitch_user_answers ua INNER JOIN pitch_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "test" AND userid = '.$user_id.' ORDER BY q.serial_number';
+		 // $strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM pitch_user_answers ua INNER JOIN pitch_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "test" AND userid = '.$user_id.' ORDER BY q.serial_number';
 		$strQuery = 'SELECT ua.questionid , ua.optionid , q.answer , q.includeinscoring, h.status FROM pitch_user_answers ua INNER JOIN pitch_questions q  on ua.questionid = q.id INNER JOIN users h  on q.id = h.id WHERE q.questiontype = "test" AND userid= '.$user_id.' ';
 
 		$objQuery = $this->db->query($strQuery);
