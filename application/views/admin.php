@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>AIMs </title>
+     <title>AIMs - Admin Panel</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
 <body>
 	<div class="intro-wrapper registrer-wrapper">
 	<!-- Registration Block goes here -->
-        <form class="form-horizontal col-lg-4 col-md-5 col-sm-6 col-xs-6" role="form" id="AdminLoginForm" action="login/check_user" method="POST" autocomplete="false">
+        <form class="form-horizontal col-lg-4 col-md-5 col-sm-6 col-xs-6" role="form" id="AdminLoginForm" action="admin/login" method="POST" autocomplete="false">
 			<div class="pull-right" style="color:#a94442; font-size:13px; padding:0 0 10px 0;">
 				<?php
 					echo $this->session->flashdata('Errors');
@@ -38,7 +38,7 @@
 				<input type="password" id="Password" placeholder="Password" class="form-control" maxlength="8" minlength="5" name="password" autocomplete="off"  />
 			</div>
 			<div class="form-group">
-				<button  type="submit" id="LoginBtn" class="btn btn-primary btn-block">Submit</button>
+				<button disabled="disabled" type="submit" id="LoginBtn" class="btn btn-primary btn-block">Login</button>
 			</div>
         </form> <!-- /form -->
     	<!-- Registration Block ends here -->
@@ -62,7 +62,7 @@
 								},
 								stringLength: {
 									min: 5,
-									max: 30,
+									max: 8,
 									message: 'The username must be more than 5 and less than 8 characters long'
 								},
 								regexp: {
@@ -78,7 +78,7 @@
 								},
 								stringLength: {
 									min: 5,
-									max: 30,
+									max: 8,
 									message: 'The Password must be more than 5 and less than 8 characters long'
 								}
 								

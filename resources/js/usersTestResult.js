@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	
-	$('#usersTestResultList').DataTable({
-		
-	});
+	$('#usersTestResultList').DataTable();
 
 });

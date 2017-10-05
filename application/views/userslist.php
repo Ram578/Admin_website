@@ -4,15 +4,27 @@
 	</script>
 		<!-- Admin Dashboard Starts here -->
 			<!-- Header goes here -->
-			
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="<?=base_url();?>admindashboard">Dashboard</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav" style="float:none;">
+							<li><a href="<?=base_url();?>home">Home</a></li>
+							<li class="pull-right"><a href="<?=base_url();?>admindashboard/logout">Log Out</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</nav>
 			<!-- Header ends here -->
 			<!-- Body Content goes here -->
 			<section class="adminDashboardView">
 				<div class="UserListView container">
+					<h2><?php echo $app_title; ?></h2>
 					<div>
-						<a id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>userslist/export" style="width:150px; min-width:inherit; margin-bottom: 2%;"> Export </a>
+						<a id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>userslist/export/<?php echo $application_type;?>" style="width:150px; min-width:inherit; margin-bottom: 2%;">Export</a>
 					</div>
-					
 					<table width="100%" id="tblCustomerList" cellspacing="0" cellpadding="0" class="table table-responsive table-striped">
 						<thead>
 							<tr>

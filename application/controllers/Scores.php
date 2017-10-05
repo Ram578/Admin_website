@@ -13,35 +13,20 @@ class Scores extends CI_Controller {
 		
 		$arrData['User'] = $this->adminmodel->fetch_user($user_file_num);
 		
-		$arrData['PitchResults'] = $this->adminmodel->FetchUserTestResult("pitch", $arrData['User'][0]['id']);
-		// var_dump($arrData['PitchResults']);
-		// die;
+		$intPitchScore = $this->adminmodel->FetchUserResult($arrData['User'][0]['id'], "pitch");
+		$arrData['User'][0]['pitch_score'] = $intPitchScore;
+		$arrData['User'][0]['pitch_certile'] = $this->adminmodel->FetchCertileWRT($intPitchScore, $arrData['User'][0]['age'], $arrData['User'][0]['gender'], "pitch");
 		
-		$arrData['TimeResults'] = $this->adminmodel->FetchUserTestResult("time",$arrData['User'][0]['id']);
-	   // $arrData['TonalResults'] = $this->adminmodel->FetchUserTestResult("tonal",$arrData['User'][0]['id']);
-		
-		// var_dump($arrData);
+		$intTimeScore = $this->adminmodel->FetchUserResult($arrData['User'][0]['id'], "time");
+		$arrData['User'][0]['time_score'] = $intTimeScore;
+		$arrData['User'][0]['time_certile'] = $this->adminmodel->FetchCertileWRT($intTimeScore, $arrData['User'][0]['age'], $arrData['User'][0]['gender'], "time");
 				
-					$intPitchScore = $this->adminmodel->FetchPitchUserResult($arrData['User'][0]['id']);
-					
-					$intTimeScore = $this->adminmodel->FetchTimeUserResult($arrData['User'][0]['id']);
-					
-					$arrData['User'][0]['pitch_score'] = $intPitchScore;
-
-					$arrData['User'][0]['pitch_certile'] = $this->adminmodel->FetchPitchCertileWRT($intPitchScore, $arrData['User'][0]['age'], $arrData['User'][0]['gender']);
-					$arrData['User'][0]['time_score'] = $intTimeScore;
-
-					$arrData['User'][0]['time_certile'] = $this->adminmodel->FetchTimeCertileWRT($intTimeScore, $arrData['User'][0]['age'], $arrData['User'][0]['gender']);
-					// var_dump($arrData);
-				
-				
-	   $this->load->view('scores', $arrData); 
+		$this->load->view('scores', $arrData); 
 	   
 	}
 	
 	
 	//export user data in csv file
-//export user data in csv file
 	public function export()
 	{
 		$this->load->model('adminmodel');

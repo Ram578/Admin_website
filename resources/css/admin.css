@@ -1,4 +1,5 @@
 html, body {
+	height: 100%;
 	background:#fff;
 }
 .color-white {
@@ -51,4 +52,14 @@ html, body {
     color: #fff;
     background-color: #333;
     border-color: #ddd;
+}
+.homeDashboardView {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.homeView .row form {
+	width: 70%;
+	margin: auto;
 }

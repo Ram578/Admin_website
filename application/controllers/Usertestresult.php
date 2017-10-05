@@ -12,45 +12,71 @@ class Usertestresult extends CI_Controller {
 		$this->load->model('adminmodel');
 		
 		$application_type = $_GET['type'];
+			
+		if($application_type == "pitch") 
+		{
+			$arrData['app_title'] = "Pitch Discrimination";
+		}
+		else if($application_type == "time") 
+		{
+			$arrData['app_title'] = "Time Discrimination";
+		}
+		else if($application_type == "tonal") 
+		{
+			$arrData['app_title'] = "Tonal Discrimination";
+		}
 		
-		$arrData['type'] = $application_type;
+		$arrData['application_type'] = $application_type;
 		
-		 // var_dump($application_type);
-		
-		// $arrData['TestResults'] = $this->adminmodel->FetchResult();
-		 $arrData['TestResults'] = $this->adminmodel->FetchTestResult($application_type);
+		$arrData['TestResults'] = $this->adminmodel->FetchTestResult($application_type);
 						
 		foreach ($arrData['TestResults'] as $key => &$value) 
 		{
-			$intScore = $this->adminmodel->FetchUserResult($value['id']);
+			$intScore = $this->adminmodel->FetchUserResult($value['id'], $application_type);
 
 			$value['score'] = $intScore;
 
-			$value['certile'] = $this->adminmodel->FetchPitchCertileWRT($intScore, $value['age'], $value['gender']);
+			$value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender'], $application_type);
 		}
-		
-		// print_r($arrData);
-		// die;
 
-		 $this->load->view('user_test_result', $arrData);
+		$this->load->view('user_test_result', $arrData);
 	}
 
-		public function export()
-		{
+	public function export($type)
+	{
 		$this->load->model('adminmodel');
-		
-		$application_type = $_GET['type'];
-		
-		$arrData['type'] = $application_type;
 
 		$arrResult = $this->adminmodel->FetchTestResult($type);
 
 		$arrTemp = array();
 
-		$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7');
-
+		$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Score', 'Certile', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7');
+		
 		foreach ($arrResult as $key => &$value) 
 		{
+			$intScore = $this->adminmodel->FetchUserResult($value['id'], $type);
+
+			$value['score'] = $intScore;
+
+			$value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender'], $type);
+		}
+		
+		foreach ($arrResult as $key => &$value) 
+		{
+			//Check the application type for completed date and status
+			if($type == "pitch") 
+			{
+				$value['status'] =  $value['pitch_status'];
+			}
+			else if($type == "time") 
+			{
+				$value['status'] =  $value['time_status'];
+			}
+			else if($type == "tonal")
+			{
+				$value['status'] =  $value['tonal_status'];
+			}
+			
 			if(count($value['practice_result']) > 0)
 			{
 				if($value['status'] == 1) {
@@ -93,12 +119,17 @@ class Usertestresult extends CI_Controller {
 			}
 
 			$arrTempRow = $value;
-			// unset($arrTempRow['test_result']);
-			// unset($arrTempRow['practice_result']);
-			// unset($arrTempRow['active']);
-			// unset($arrTempRow['addeddate']);
-			// unset($arrTempRow['completeddate']);
-			// unset($arrTempRow['status']);
+			unset($arrTempRow['test_result']);
+			unset($arrTempRow['practice_result']);
+			unset($arrTempRow['active']);
+			unset($arrTempRow['addeddate']);
+			unset($arrTempRow['status']);
+			unset($arrTempRow['pitch_status']);
+			unset($arrTempRow['time_status']);
+			unset($arrTempRow['tonal_status']);
+			unset($arrTempRow['pitch_completed_date']);
+			unset($arrTempRow['time_completed_date']);
+			unset($arrTempRow['tonal_completed_date']);
 			$arrTemp[] = $arrTempRow;
 		}
 		
@@ -121,22 +152,22 @@ class Usertestresult extends CI_Controller {
 			}
 		}
 		//print_r($arrTemp); exit;
-		foreach ($arrTemp as $key => &$value) 
-		{
-			$intScore = $this->adminmodel->FetchUserResult($value['id']);
+		// foreach ($arrTemp as $key => &$value) 
+		// {
+			// $intScore = $this->adminmodel->FetchUserResult($value['id'], $type);
 
-			$value['score'] = $intScore;
+			// $value['score'] = $intScore;
 
-			$value['certile'] = $this->adminmodel->FetchPitchCertileWRT($intScore, $value['age'], $value['gender']);
-		}
+			// $value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender'], $type);
+		// }
 
-		$arrHeaders[] = 'Score';
-		$arrHeaders[] = 'Certile';
+		// $arrHeaders[] = 'Score';
+		// $arrHeaders[] = 'Certile';
 
 		$arrHeaders = array_unique($arrHeaders);
 		
 		// Enable to download this file
-		$filename = "UsersTestResult.csv";
+		$filename = ucfirst($type)."UsersTestResult.csv";
 		 		
 		header("Pragma: public");
 		header("Content-Type: text/plain");
@@ -186,4 +217,5 @@ class Usertestresult extends CI_Controller {
 	        }
 	    }
 	}
+	
 }

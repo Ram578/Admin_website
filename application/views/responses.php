@@ -7,7 +7,7 @@
 			<section class="resposesView" style=" padding:5em;" >
 				<div>
 					<!--<button id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>responses/export?file_num=<?php //echo $user_file_num;?>&user_id=<?php //echo $User[0]['id'];?>" style="width:150px; min-width:inherit; margin-bottom: 2%; margin-right:-7em;"> Export </button>-->
-					<a id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>responses/export?file_num=<?php echo $user_file_num;?>&user_id=<?php echo $User[0]['id'];?>" style="width:150px; min-width:inherit; margin-bottom: 2%; margin-right:-7em;">Export</a>
+					<a id="btnExport" class="btn btn-primary pull-right col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>responses/export/<?php echo $user_file_num;?>/<?php echo $User[0]['id'];?>" style="width:150px; min-width:inherit; margin-bottom: 2%; margin-right:-7em;">Export</a>
 				</div>
 				<div class="UserListView">
 					<table width="100%" cellspacing="0" cellpadding="0" id="responses" class="table table-responsive table-striped" style="margin-left:7em;margin-right:2em;">

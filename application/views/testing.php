@@ -21,7 +21,7 @@
 								  <option value="tonal">Tonal Memory</option>
 						</select>
 						<div class="col_full form-group" style="padding:2em;">
-							<div class="row">
+							<div class="row" style="margin-top: 20%;">
 								 <div class="col-sm-4">
 									<label class="radio-inline" id="selectedLabel">
 										<input type="radio" id="userslist" value="userslist"  name="table_type" checked="checked" > UsersList

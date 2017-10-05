@@ -1,77 +1,83 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {	
+class Home extends CI_Controller {
+
 	/**
 	 * This is Home page controller.
-	 * Develope on 19th July'2016 by Hemanth Kumar
-	 * Modified on 24th.
-	 */ 
-
+	 */
 	public function index()
 	{
-		/**
-		* Checking the session and redirecting to respective pages
-		*/
-		if(isset($this->session->userdata['UserID']))
+		if(!isset($this->session->userdata['EmployeeID']))
 		{
-			redirect('/welcome', 'refresh');
-		}else
+			redirect('admin', 'refresh');
+		}
+		else
+    	{
+			$this->load->view('home'); 
+    	}
+	}
+	
+	public function test_results() 
+	{
+		$application_type = $_POST['application'];
+		
+		$table_type = $_POST['table_type'];
+	 
+		if($table_type == "userslist") 
 		{
-			$arrData['Title'] = 'AIMs - Admin panel';
-
-			$Header = $this->load->view('header', $arrData,true);
-
-			$arrData['Header'] = $Header;
-
-			$arrData['Footer'] = $this->load->view('footer', $arrData,true);
-
-			$this->load->view('home', $arrData);
+			if($application_type == "pitch") 
+			{
+				redirect('userslist?type='.$application_type, 'refresh');
+			}
+			else if($application_type == "time") 
+			{
+				redirect('userslist?type='.$application_type, 'refresh');
+			}
+			else if($application_type == "tonal")
+			{
+				redirect('userslist?type='.$application_type, 'refresh');
+			}	
+		}
+		else if($table_type == "test_result") 
+		{
+			if($application_type == "pitch")
+			{
+				redirect('usertestresult?type='.$application_type, 'refresh');
+			}
+			else if($application_type == "time") 
+			{
+				redirect('usertestresult?type='.$application_type, 'refresh');
+			}
+			else if($application_type == "tonal")
+			{
+				redirect('usertestresult?type='.$application_type, 'refresh');
+			}	
 		}
 	}
-
-	public function logout()
-	{
-		//$this->session->session_destroy();
-
-		$this->session->unset_userdata('UserID');
-		
-		redirect('/', 'refresh');
-	}
-
-	public function register()
-	{
-		/* Load the database model:
-      	/application/models/Register.php */
-
-    	$this->load->model('registermodel');
-
-    	$result = $this->registermodel->RegisterUser();
-		
-		// var_dump($_POST);
-    	
-		if(is_integer($result))
-    	{
-    		 redirect('/welcome', 'refresh');
-    	}else
-    	{
-    		$this->session->set_flashdata('Errors', array($result)); 
-
-    		redirect('/', 'refresh');
-    	}
-
-	}
 	
-	//
-	
-	public function date_test() 
+	function user_total_results() 
 	{
-		$this->load->model('registermodel');
+		$filenumber = trim($_POST['filenumber']);
+		$test_type = $_POST['test_type'];
 		
-		$result = $this->registermodel->test_date();
-		echo timezones('UM5');
-		echo "\n";
-		var_dump($result);
-		die;
-	}
+		if($filenumber != "")
+		{
+			if($test_type == 'scores') 
+			{
+				redirect('scores?file_num='.$filenumber, 'refresh');
+			}
+			else
+			{
+				redirect('responses?file_num='.$filenumber, 'refresh');
+			}
+		} 
+		else {
+			redirect('home', 'refresh');
+		}
+	} 
+	
 }
+	
+	
+
