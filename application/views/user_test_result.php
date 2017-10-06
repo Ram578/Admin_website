@@ -37,7 +37,6 @@
 							foreach ($TestResults as $key => $value) {
 						?>
 							<tr>
-								<!--td valign="middle"><?=$value['firstname'];?></td-->
 								<td valign="middle"><?=$value['age'];?></td>
 								<td><?=$value['gender'];?></td>
 								

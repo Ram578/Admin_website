@@ -13,13 +13,13 @@ class Scores extends CI_Controller {
 		
 		$arrData['User'] = $this->adminmodel->fetch_user($user_file_num);
 		
-		$intPitchScore = $this->adminmodel->FetchUserResult($arrData['User'][0]['id'], "pitch");
-		$arrData['User'][0]['pitch_score'] = $intPitchScore;
-		$arrData['User'][0]['pitch_certile'] = $this->adminmodel->FetchCertileWRT($intPitchScore, $arrData['User'][0]['age'], $arrData['User'][0]['gender'], "pitch");
+		$intPitchScore = $this->adminmodel->FetchUserResult($arrData['User']['id'], "pitch");
+		$arrData['User']['pitch_score'] = $intPitchScore;
+		$arrData['User']['pitch_certile'] = $this->adminmodel->FetchCertileWRT($intPitchScore, $arrData['User']['age'], $arrData['User']['gender'], "pitch");
 		
-		$intTimeScore = $this->adminmodel->FetchUserResult($arrData['User'][0]['id'], "time");
-		$arrData['User'][0]['time_score'] = $intTimeScore;
-		$arrData['User'][0]['time_certile'] = $this->adminmodel->FetchCertileWRT($intTimeScore, $arrData['User'][0]['age'], $arrData['User'][0]['gender'], "time");
+		$intTimeScore = $this->adminmodel->FetchUserResult($arrData['User']['id'], "time");
+		$arrData['User']['time_score'] = $intTimeScore;
+		$arrData['User']['time_certile'] = $this->adminmodel->FetchCertileWRT($intTimeScore, $arrData['User']['age'], $arrData['User']['gender'], "time");
 				
 		$this->load->view('scores', $arrData); 
 	   

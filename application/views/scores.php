@@ -30,10 +30,10 @@
 						<h2 align="center">AIMS Testing Results</h2>
 					</div>
 					<div style="margin-bottom:3%;">
-						<div><b>First Name: </b><?php echo $User[0]['firstname']; ?></div>
-						<div><b>Last Name: </b><?php echo $User[0]['lastname']; ?></div>
-						<div><b>File Number:</b> <?php echo $User[0]['filenumber']; ?></div>
-						<div><b>Age:</b> <?php echo $User[0]['age']; ?></div>
+						<div><b>First Name: </b><?php echo $User['firstname']; ?></div>
+						<div><b>Last Name: </b><?php echo $User['lastname']; ?></div>
+						<div><b>File Number:</b> <?php echo $User['filenumber']; ?></div>
+						<div><b>Age:</b> <?php echo $User['age']; ?></div>
 					</div>
 					<table cellspacing="0" cellpadding="0" class="table table-responsive table-striped">
 						<thead>
@@ -47,21 +47,21 @@
 						<tbody>
 							<tr>
 								<td>Pitch Discrimination</td>
-								<td><?php echo $User[0]['pitch_completed_date']; ?></td>
-								<td><?php echo $User[0]['pitch_score']; ?></td>
-								<td><?php echo $User[0]['pitch_certile']; ?></td>
+								<td><?php echo $User['pitch_completed_date']; ?></td>
+								<td><?php echo $User['pitch_score']; ?></td>
+								<td><?php echo $User['pitch_certile']; ?></td>
 							</tr>
 							<tr>
 								<td>Time Discrimination</td>
-								<td><?php echo $User[0]['time_completed_date']; ?></td>
-								<td><?php echo $User[0]['time_score'];?></td>
-								<td><?php echo $User[0]['time_certile'];?></td>
+								<td><?php echo $User['time_completed_date']; ?></td>
+								<td><?php echo $User['time_score'];?></td>
+								<td><?php echo $User['time_certile'];?></td>
 							</tr>
 							<tr>
 								<td>Tonal Discrimination</td>
-								<td><?php echo $User[0]['tonal_completed_date']; ?></td>
-								<td><?php //echo $User[0]['tonal_score'];?></td>
-								<td><?php //echo $User[0]['tonal_certile'];?></td>
+								<td><?php echo $User['tonal_completed_date']; ?></td>
+								<td><?php //echo $User['tonal_score'];?></td>
+								<td><?php //echo $User['tonal_certile'];?></td>
 							</tr>
 						</tbody>
 					</table>

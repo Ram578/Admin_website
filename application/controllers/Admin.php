@@ -4,15 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 
 	/**
-	 * This is TonalTest page controller.
-	 * Develope on 21th July'2016 by Hemanth Kumar
+	 * This is Admin page controller.
 	 */
 	public function index()
 	{
 		if(!isset($this->session->userdata['EmployeeID']))
 		{
 			$this->load->view('admin');
-		}else
+		}
+		else
 		{
 			redirect('admindashboard', 'refresh');
 		}
@@ -27,7 +27,8 @@ class Admin extends CI_Controller {
 		if($result)
 		{
 			redirect('/admindashboard', 'refresh');
-		}else
+		}
+		else
 		{
 			redirect('/admin', 'refresh');
 		}

@@ -74,7 +74,7 @@ class Adminmodel extends CI_Model
 
 		$objQuery = $this->db->query($strQuery);
 
-		return $objQuery->result_array();
+		return $objQuery->row_array();
 	}
 	
 	function FetchUserResult($id_user, $type)
@@ -199,35 +199,60 @@ class Adminmodel extends CI_Model
 		return $arrUsers;
 	}
 	
-	/*
-	function FetchCertile()
+	function fetch_pitch_user($file_num)
 	{
-		$strQuery = 'SELECT * FROM aims_certile ORDER BY id DESC';
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,pitch_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
 
-		return $objQuery->result_array();
+		return $objQuery->row_array();
 	}
 	
-	function fetch_certile_scores()
+	function fetch_time_user($file_num)
 	{
-		$strQuery = 'SELECT * FROM pitch_certile_scores ORDER BY id DESC';
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,time_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
 
-		return $objQuery->result_array();
+		return $objQuery->row_array();
 	}
 	
-	//fetch subscores data to display in admin subscores view table
-	function fetch_subscores()
+	//Get user practice and test question results
+	function fetch_user_test_result($file_num)
 	{
-		$strQuery = 'SELECT * FROM pitch_subscores ORDER BY id DESC';
-
-		$objQuery = $this->db->query($strQuery);
-
-		return $objQuery->result_array();
+		$arrUser = array();
+		$pitchArrUser = $this->fetch_pitch_user($file_num);
+		$pitchArrUser['type'] = "Pitch Discrimination";
+		$pitchArrUser['app_type'] = "pitch";
+		$pitchArrUser['test_result'] = $this->_userResults($pitchArrUser['id'], "pitch");
+		$pitchArrUser['practice_result'] = $this->_userPracticeResults($pitchArrUser['id'], "pitch");
+		
+		$timeArrUser = $this->fetch_time_user($file_num);
+		$timeArrUser['type'] = "Time Discrimination";
+		$timeArrUser['app_type'] = "time";
+		$timeArrUser['test_result'] = $this->_userResults($timeArrUser['id'], "time");
+		$timeArrUser['practice_result'] = $this->_userPracticeResults($timeArrUser['id'], "time");
+		
+		/*
+		$tonalArrUser = $this->fetch_time_user($file_num);
+		$tonalArrUser['type'] = "Tonal Memory";
+		$tonalArrUser['app_type'] = "time";
+		$tonalArrUser['test_result'] = $this->_userResults($tonalArrUser['id'], "time");
+		$tonalArrUser['practice_result'] = $this->_userPracticeResults($tonalArrUser['id'], "time");
+		*/
+		
+		// foreach ($arrUsers as $key => &$value) 
+		// {
+			// $value['test_result'] = $this->_userResults($value['id'], "pitch");
+			
+			// $value['practice_result'] = $this->_userPracticeResults($value['id'], "pitch");
+		// }
+		
+		array_push($arrUser, $pitchArrUser, $timeArrUser);
+		
+		return $arrUser;
 	}
-	*/
+	
 }
 
 ?>

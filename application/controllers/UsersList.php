@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Userslist extends CI_Controller {
 
 	/**
-	 * This is TonalTest page controller.
-	 * Develope on 21th July'2016 by Hemanth Kumar
+	 * This is Userslist page controller.
 	 */
+	 
 	public function index()
 	{
 		if(isset($this->session->userdata['EmployeeID']))
@@ -128,4 +128,3 @@ class Userslist extends CI_Controller {
 	}
 	
 }
-

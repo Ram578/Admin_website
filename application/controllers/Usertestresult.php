@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usertestresult extends CI_Controller {
 
 	/**
-	 * This is NewExampleInfo page controller.
-	 * Develope on 19th July'2016 by Hemanth Kumar
+	 * This is Usertestresult page controller.
 	 */
+	 
 	public function index()
 	{
 		$this->load->model('adminmodel');
@@ -137,8 +137,6 @@ class Usertestresult extends CI_Controller {
 			    return count($row);
 			}, $arrTemp));
 
-		//$this->cleanArray($arrTemp);
-		
 		//If there is no values then it gives empty values
 		foreach ($arrTemp as &$value) 
 		{
@@ -151,19 +149,7 @@ class Usertestresult extends CI_Controller {
 				}
 			}
 		}
-		//print_r($arrTemp); exit;
-		// foreach ($arrTemp as $key => &$value) 
-		// {
-			// $intScore = $this->adminmodel->FetchUserResult($value['id'], $type);
-
-			// $value['score'] = $intScore;
-
-			// $value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender'], $type);
-		// }
-
-		// $arrHeaders[] = 'Score';
-		// $arrHeaders[] = 'Certile';
-
+		
 		$arrHeaders = array_unique($arrHeaders);
 		
 		// Enable to download this file
@@ -189,33 +175,9 @@ class Usertestresult extends CI_Controller {
 		}
 
 		$flag = false;
-		/*if(count($arrTemp)) {
-		    if(!$flag) {
-		      // display field/column names as first row
-		      fputcsv($display, array_values($arrHeaders), ",", '"');
-		      $flag = true;
-		    }
-		    foreach ($arrTemp as $key => $value) {
-			    fputcsv($display, array_values($value), ",", '"');
-			}
-		  } 
-		  */
 		 
 		fclose($display);
 		
 	}
 
-	function cleanArray(&$array)
-	{
-	    end($array);
-	    $max = key($array); //Get the final key as max!
-	    for($i = 0; $i < $max; $i++)
-	    {
-	        if(!isset($array[$i]))
-	        {
-	            $array[$i] = '';
-	        }
-	    }
-	}
-	
 }
