@@ -2,7 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Scores extends CI_Controller {
-
+	
+	/**
+	 * This is Scores page controller.
+	 */
+	 
 	public function index()
 	{
 		$user_file_num = $_GET['file_num'];
@@ -25,22 +29,21 @@ class Scores extends CI_Controller {
 	   
 	}
 	
-	
-	//export user data in csv file
-	public function export()
+	public function export($file_num)
 	{
 		$this->load->model('adminmodel');
 		
-		$user_file_num = $_GET['file_num'];
-		$user_id = $_GET['user_id'];
+		$arrData['Users'] = $this->adminmodel->fetch_user_test_results($file_num);
 		
-		$arrData['User']= $this->adminmodel->fetch_user($user_file_num);
-		
-		foreach ($arrData['User'] as $key => &$value) 
+		foreach ($arrData['Users'] as $key => &$value) 
 		{
+			$intScore = $this->adminmodel->FetchUserResult($value['id'], $value['app_type']);
+
+			$value['score'] = $intScore;
+
+			$value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender'], $value['app_type']);
 			
-			$intScore = $this->adminmodel->FetchPitchUserResult($user_id);
-			
+			// Check the Status & then assign the value
 			if($value['status'] == 1) 
 			{
 				$value['status'] = "Next";
@@ -51,27 +54,25 @@ class Scores extends CI_Controller {
 			} 
 			else
 			{
-				$value[0]['status'] = "";
+				$value['status'] = "";
 			}
-
-			$value['score'] = $intScore;
-
-			$value['certile'] = $this->adminmodel->FetchPitchCertileWRT($intScore, $value['age'], $value['gender']);
+			
+			unset($value['app_type']);
 		}
 		
 		// Enable to download this file
-		$filename = "Scores.csv";
+		$filename = "UserList.csv";
 		 
 		header("Content-Disposition: attachment; filename=\"$filename\"");
         header("Content-Type: text/csv");
          
         $display = fopen("php://output", 'w');
          
-        $arrHeaders = array( 'ID','First Name','Last Name','Age', 'Gender', 'File Number', 'Created Date', 'Completed Date', 'Score', 'Certile');
+        $arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Created Date', 'Completed Date', 'Active', 'Status','Application Type', 'Score', 'Certile');
         
         fputcsv($display, array_values($arrHeaders), ",", '"');
        
-		$users = $arrData['User'];
+		$users = $arrData['Users'];
 		
 		if(isset($users))    
 		{
@@ -83,4 +84,5 @@ class Scores extends CI_Controller {
        
 		fclose($display);
 	}
+	
 }

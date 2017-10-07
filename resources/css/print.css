@@ -1,23 +1,6 @@
-/*#btnPrint {
-	background-color: #9195ab; 
-	width: 18em; 
-	border-radius: 3px; 
-	height: 2em; 
-	float:right; 
-	background-image:url("resources/img/aims_logo.jpg");
-	}*/
-	 #btnExport {  
-			display:none; 
-		} 
-	 #btnPrint { 
-		/* background-color: red !important; */
-		/* -webkit-print-color-adjust: exact; */
-		display:none; 
-	 } 
-	/* #adminDashboardView { */
-		/*background-image:url("../img/aims_logo.jpg") no-repeat !important;*/
-	
-		/* background: url('../img/aims_logo.jpg') no-repeat !important; */
-		/* width:250px; */
-		/* height: 250px; */
-	/* } */
+
+@media print
+{
+#btnExport {display:none;}
+#btnPrint {display:none;}
+}

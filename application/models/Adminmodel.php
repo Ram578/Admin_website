@@ -201,7 +201,7 @@ class Adminmodel extends CI_Model
 	
 	function fetch_pitch_user($file_num)
 	{
-		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,pitch_status as status FROM users WHERE filenumber="'.$file_num.'"';
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,pitch_completed_date as completeddate,active,pitch_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
 
@@ -210,14 +210,37 @@ class Adminmodel extends CI_Model
 	
 	function fetch_time_user($file_num)
 	{
-		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,time_status as status FROM users WHERE filenumber="'.$file_num.'"';
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,time_completed_date as completeddate,active,time_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
 
 		return $objQuery->row_array();
 	}
 	
-	//Get user practice and test question results
+	//Get user practice and test question results for single user scores result
+	function fetch_user_test_results($file_num)
+	{
+		$arrUser = array();
+		$pitchArrUser = $this->fetch_pitch_user($file_num);
+		$pitchArrUser['type'] = "Pitch Discrimination";
+		$pitchArrUser['app_type'] = "pitch";
+		
+		$timeArrUser = $this->fetch_time_user($file_num);
+		$timeArrUser['type'] = "Time Discrimination";
+		$timeArrUser['app_type'] = "time";
+		
+		/*
+		$tonalArrUser = $this->fetch_time_user($file_num);
+		$tonalArrUser['type'] = "Tonal Memory";
+		$tonalArrUser['app_type'] = "time";
+		*/
+		
+		array_push($arrUser, $pitchArrUser, $timeArrUser);
+		
+		return $arrUser;
+	}
+	
+	//Get user practice and test question results for single user responses result
 	function fetch_user_test_result($file_num)
 	{
 		$arrUser = array();
@@ -240,13 +263,6 @@ class Adminmodel extends CI_Model
 		$tonalArrUser['test_result'] = $this->_userResults($tonalArrUser['id'], "time");
 		$tonalArrUser['practice_result'] = $this->_userPracticeResults($tonalArrUser['id'], "time");
 		*/
-		
-		// foreach ($arrUsers as $key => &$value) 
-		// {
-			// $value['test_result'] = $this->_userResults($value['id'], "pitch");
-			
-			// $value['practice_result'] = $this->_userPracticeResults($value['id'], "pitch");
-		// }
 		
 		array_push($arrUser, $pitchArrUser, $timeArrUser);
 		

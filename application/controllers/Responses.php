@@ -96,6 +96,9 @@ class Responses extends CI_Controller {
 			unset($arrTempRow['test_result']);
 			unset($arrTempRow['practice_result']);
 			unset($arrTempRow['app_type']);
+			unset($arrTempRow['addeddate']);
+			unset($arrTempRow['completeddate']);
+			unset($arrTempRow['active']);
 			unset($arrTempRow['status']);
 			
 			$arrTemp[] = $arrTempRow;
