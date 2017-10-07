@@ -16,7 +16,7 @@
 		<!-- <link href="<?//=base_url();?>resources/css/cssBundle.css" rel="stylesheet" /> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="<?=base_url();?>resources/css/admin.css" rel="stylesheet" />
-		<link href="<?=base_url();?>resources/css/print.css" rel="stylesheet" method="print"/>
+		<link href="<?=base_url();?>resources/css/print.css" rel="stylesheet" />
 		<link href="<?=base_url();?>resources/css/jquery.dataTables.css" rel="stylesheet" />
 		<link href="<?=base_url();?>resources/css/sweetalert.css" rel="stylesheet" />
 		

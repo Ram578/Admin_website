@@ -19,13 +19,13 @@
 			</nav>
 			<!-- Header ends here -->
 			<!-- Body Content goes here -->
-			<section class="adminDashboardView">
+			<section class="adminDashboardView" id="printDashboardView">
 				<div class="UserListView container">
 					<div class="btns">
-						<a id="btnPrint" class="btn btn-primary col-md-1 col-sm-1" method="print" target="_blank" style="width:150px; min-width:inherit; margin-bottom:2%;">Print</a>
+						<a id="btnPrint" class="btn btn-primary col-md-1 col-sm-1" style="width:150px; min-width:inherit; margin-bottom:2%;">Print</a>
 						<a id="btnExport" class="btn btn-primary col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>scores/export/<?php echo $user_file_num;?>" style="width:150px; min-width:inherit; margin-bottom:2%; left:1%;">Export</a>
 					</div>
-					<div class="background" style="display:none;"></div>
+					<div class="imgLogo"></div>
 					<div style="margin:5%;">
 						<h2 align="center">AIMS Testing Results</h2>
 					</div>

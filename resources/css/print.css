@@ -1,6 +1,12 @@
-
-@media print
-{
-#btnExport {display:none;}
-#btnPrint {display:none;}
+@media print {
+	body {
+		height:80%;
+	}
+	#btnExport, #btnPrint {  
+		display:none; 
+	} 
+	
+	.imgLogo {
+		display: block;
+	}
 }
