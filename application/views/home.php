@@ -11,7 +11,7 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav" style="float:none;">
-							<li class="active"><a href="<?=base_url();?>home">Home</a></li>
+							<li class=""><a href="<?=base_url();?>home">Home</a></li>
 							<!--<li><a href="<?//=base_url();?>userslist">Users List</a></li>
 							<li><a href="<?//=base_url();?>usertestresult">Test Result</a></li> -->
 							<li class="pull-right"><a href="<?=base_url();?>admindashboard/logout">Log Out</a></li>
@@ -38,20 +38,20 @@
 									</div>
 									<div class="col_full form-group">
 										<div class="row">
-											 <div class="col-sm-4">
+											 <div class="col-sm-4" style="padding:2em;">
 												<label class="radio-inline" id="selectedLabel">
 													<input type="radio" id="userslist" value="userslist" name="table_type" checked="checked">Users List
 												</label>
 											</div>
-											<div class="col-sm-4" id="radioselect">
+											<div class="col-sm-4" id="radioselect" style="padding:2em;">
 												<label class="radio-inline"  id="selectedLabel">
-													<input type="radio" id="testresult" name="table_type" value="test_result">Test Result
+													<input type="radio" id="testresult" name="table_type" value="test_result">TestResult
 												</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" id="testname" class="btn btn-primary btn-block">Submit</button>
+										<button type="submit" id="testname" class="btn btn-primary btn-block" style="background-color:#FF0000;">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -65,12 +65,12 @@
 									</div>
 									<div class="col_full form-group">
 										<div class="row">
-											 <div class="col-sm-4">
+											 <div class="col-sm-4" style="padding:2em;">
 												<label class="radio-inline" id="selectedLabel">
 													<input type="radio" id="scores" name="test_type" value="scores" checked="checked">Scores
 												</label>	
 											</div>
-											<div class="col-sm-4">
+											<div class="col-sm-4" style="padding:2em;">
 												<label class="radio-inline" id="selectedLabel">	
 													<input type="radio" id="radioselect" name="test_type" value="responses">Responses
 												</label>
@@ -78,7 +78,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" id="TesingButton" class="btn btn-primary btn-block">Submit</button>
+										<button type="submit" id="TesingButton" class="btn btn-primary btn-block" style="background-color:#FF0000;">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -86,7 +86,10 @@
 					<!-- testresult Block ends here -->
 					</div>
 				</div>
+				
 			</section>
+		
 			<!-- Body Content ends here -->
 		<!-- Admin Dashboard ends here -->
-<?php include 'admin_footer.php'; ?>
+<footer class="footer" style="padding-bottom:1em;">
+</footer>

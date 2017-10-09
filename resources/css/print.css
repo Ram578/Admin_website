@@ -1,12 +1,16 @@
 @media print {
 	body {
-		height:80%;
+		font-size:30px;
+		color:#3f51b5 !important;
+		-webkit-print-color-adjust: exact; 
 	}
+	
 	#btnExport, #btnPrint {  
 		display:none; 
 	} 
 	
 	.imgLogo {
 		display: block;
+		padding:-2em;
 	}
 }

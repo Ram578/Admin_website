@@ -25,9 +25,11 @@
 						<a id="btnPrint" class="btn btn-primary col-md-1 col-sm-1" style="width:150px; min-width:inherit; margin-bottom:2%;">Print</a>
 						<a id="btnExport" class="btn btn-primary col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>scores/export/<?php echo $user_file_num;?>" style="width:150px; min-width:inherit; margin-bottom:2%; left:1%;">Export</a>
 					</div>
-					<div class="imgLogo"></div>
-					<div style="margin:5%;">
-						<h2 align="center">AIMS Testing Results</h2>
+					<div class="row">
+						<div class="col-md-4 imgLogo"></div>
+						<div class="col-md-4" style="margin:5%;">
+							<h2 align="center">AIMS Testing Results</h2>
+						</div>
 					</div>
 					<div style="margin-bottom:3%;">
 						<div><b>First Name: </b><?php echo $User['firstname']; ?></div>
