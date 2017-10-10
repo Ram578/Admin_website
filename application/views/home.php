@@ -36,22 +36,22 @@
 											<!-- <option value="tonal">Tonal Memory</option> -->
 										</select>
 									</div>
-									<div class="col_full form-group">
+									<div class="col_full form-group" style="padding:1em;">
 										<div class="row">
-											 <div class="col-sm-4" style="padding:2em;">
+											 <div class="col-sm-4">
 												<label class="radio-inline" id="selectedLabel">
 													<input type="radio" id="userslist" value="userslist" name="table_type" checked="checked">Users List
 												</label>
 											</div>
-											<div class="col-sm-4" id="radioselect" style="padding:2em;">
+											<div class="col-sm-4" id="radioselect">
 												<label class="radio-inline"  id="selectedLabel">
-													<input type="radio" id="testresult" name="table_type" value="test_result">TestResult
+													<input type="radio" id="testresult" name="table_type" value="test_result">Test Result
 												</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" id="testname" class="btn btn-primary btn-block" style="background-color:#FF0000;">Submit</button>
+										<button type="submit" id="testname" class="btn btn-primary btn-block">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -63,14 +63,14 @@
 										<label for="sleAge" id="selectedLabel">File Number : </label>
 										<input type="text" id="filenumber" class="form-control" name="filenumber" autocomplete="false" required />
 									</div>
-									<div class="col_full form-group">
+									<div class="col_full form-group" style="padding:1em;">
 										<div class="row">
-											 <div class="col-sm-4" style="padding:2em;">
+											 <div class="col-sm-4">
 												<label class="radio-inline" id="selectedLabel">
 													<input type="radio" id="scores" name="test_type" value="scores" checked="checked">Scores
 												</label>	
 											</div>
-											<div class="col-sm-4" style="padding:2em;">
+											<div class="col-sm-4">
 												<label class="radio-inline" id="selectedLabel">	
 													<input type="radio" id="radioselect" name="test_type" value="responses">Responses
 												</label>
@@ -78,7 +78,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" id="TesingButton" class="btn btn-primary btn-block" style="background-color:#FF0000;">Submit</button>
+										<button type="submit" id="TesingButton" class="btn btn-primary btn-block">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -86,10 +86,10 @@
 					<!-- testresult Block ends here -->
 					</div>
 				</div>
-				
 			</section>
-		
+			
+<footer class="footer">
+</footer>
 			<!-- Body Content ends here -->
 		<!-- Admin Dashboard ends here -->
-<footer class="footer" style="padding-bottom:1em;">
-</footer>
+<?php include 'admin_footer.php'; ?>

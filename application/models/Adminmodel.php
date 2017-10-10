@@ -58,9 +58,20 @@ class Adminmodel extends CI_Model
 		}
 	}
 
-	function FetchUsers()
+	function FetchUsers($type)
 	{
-		$strQuery = 'SELECT * FROM users ORDER BY id DESC';
+		if($type == "pitch")
+		{
+			$strQuery = 'SELECT * FROM users WHERE pitch_completed_date <> "0000-00-00 00:00:00.000000" ORDER BY id DESC';
+		}
+		else if($type == "time")
+		{
+			$strQuery = 'SELECT * FROM users WHERE time_completed_date <> "0000-00-00 00:00:00.000000" ORDER BY id DESC';
+		}
+		else if ($type == "tonal")
+		{
+			$strQuery = 'SELECT * FROM users WHERE tonal_completed_date <> "0000-00-00 00:00:00.000000" ORDER BY id DESC';
+		}
 
 		$objQuery = $this->db->query($strQuery);
 
@@ -186,7 +197,7 @@ class Adminmodel extends CI_Model
 	//Get all users practice and test question results
 	function FetchTestResult($type)
 	{
-		$arrUsers = $this->FetchUsers();
+		$arrUsers = $this->FetchUsers($type);
 		
 		foreach ($arrUsers as $key => &$value) 
 		{

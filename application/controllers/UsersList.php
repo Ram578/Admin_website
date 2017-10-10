@@ -30,7 +30,7 @@ class Userslist extends CI_Controller {
 						
 			$arrData['application_type'] = $application_type;
 			
-			$arrData['Users'] = $this->adminmodel->FetchUsers();
+			$arrData['Users'] = $this->adminmodel->FetchUsers($application_type);
 
 			foreach ($arrData['Users'] as $key => &$value) 
 			{

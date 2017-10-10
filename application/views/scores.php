@@ -7,7 +7,7 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="<?=base_url();?>admindashboard">Dashboard</a>
+						<a class="navbar-brand" href="<?=base_url();?>home">Dashboard</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav" style="float:none;">
@@ -20,15 +20,15 @@
 			<!-- Header ends here -->
 			<!-- Body Content goes here -->
 			<section class="adminDashboardView" id="printDashboardView">
-				<div class="UserListView container">
-					<div class="btns">
-						<a id="btnPrint" class="btn btn-primary col-md-1 col-sm-1" style="width:150px; min-width:inherit; margin-bottom:2%;">Print</a>
-						<a id="btnExport" class="btn btn-primary col-md-1 col-sm-1" target="_blank" href="<?=base_url();?>scores/export/<?php echo $user_file_num;?>" style="width:150px; min-width:inherit; margin-bottom:2%; left:1%;">Export</a>
+				<div class="ScoresListView container">
+					<div class="btns-scores">
+						<a id="btnPrint" class="btn btn-primary">Print</a>
+						<a id="btnExport" class="btn btn-primary" target="_blank" href="<?=base_url();?>scores/export/<?php echo $user_file_num;?>">Export</a>
 					</div>
-					<div class="row">
-						<div class="col-md-4 imgLogo"></div>
-						<div class="col-md-4" style="margin:5%;">
-							<h2 align="center">AIMS Testing Results</h2>
+					<div class="scores-header">
+						<div class="scores-logo">
+							<div class="imgLogo"></div>
+							<h2>AIMS Testing Results</h2>
 						</div>
 					</div>
 					<div style="margin-bottom:3%;">
@@ -37,9 +37,9 @@
 						<div><b>File Number:</b> <?php echo $User['filenumber']; ?></div>
 						<div><b>Age:</b> <?php echo $User['age']; ?></div>
 					</div>
-					<table cellspacing="0" cellpadding="0" class="table table-responsive table-striped">
+					<table cellspacing="0" cellpadding="10" class="score-table" style="padding:5em;">
 						<thead>
-							<tr>
+							<tr class="table-headings">
 								<th>Test Name</th>
 								<th>Completed Date</th>
 								<th>Score</th>
@@ -69,9 +69,9 @@
 					</table>
 				</div>
 			</section>
-			<!-- Body Content ends here -->
+		<!-- Body Content ends here -->
 		<!-- Admin Dashboard ends here -->
-		
 		<!-- JS file  -->
-		<script type="text/javascript" src="<?=base_url();?>resources/js/scores.js"></script>
 <?php include 'admin_footer.php'; ?>
+
+		<script type="text/javascript" src="<?=base_url();?>resources/js/scores.js"></script>

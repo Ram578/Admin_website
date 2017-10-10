@@ -1,16 +1,30 @@
 @media print {
 	body {
-		font-size:30px;
-		color:#3f51b5 !important;
-		-webkit-print-color-adjust: exact; 
+		height: 80%;
+		font-size: 30px;
+		-webkit-print-color-adjust:exact;
 	}
-	
+	.ScoresListView {
+		width: 100%;
+		margin: auto;
+	}
 	#btnExport, #btnPrint {  
 		display:none; 
 	} 
-	
+	.scores-logo h2 {
+		color: rgb(7, 22, 115) !important;
+		font-size: 30px;
+		-webkit-print-color-adjust: exact;
+	}
 	.imgLogo {
 		display: block;
-		padding:-2em;
 	}
+	table thead tr.table-headings { 
+		background-color: rgb(7, 22, 115) !important;
+		-webkit-print-color-adjust: exact;
+	} 
+	table thead tr th { 
+		color: #FFFFFF !important; 
+		-webkit-print-color-adjust: exact;
+	} 
 }
