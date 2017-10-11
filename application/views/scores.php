@@ -37,7 +37,7 @@
 						<div><b>File Number:</b> <?php echo $User['filenumber']; ?></div>
 						<div><b>Age:</b> <?php echo $User['age']; ?></div>
 					</div>
-					<table cellspacing="0" cellpadding="10" class="score-table" style="padding:5em;">
+					<table cellspacing="0" cellpadding="10" class="score-table" id="scorestable" style="padding:5em;">
 						<thead>
 							<tr class="table-headings">
 								<th>Test Name</th>
@@ -47,24 +47,24 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php if($User['pitch_completed_date'] != "0000-00-00 00:00:00") { ?>
 							<tr>
 								<td>Pitch Discrimination</td>
 								<td><?php echo $User['pitch_completed_date']; ?></td>
 								<td><?php echo $User['pitch_score']; ?></td>
 								<td><?php echo $User['pitch_certile']; ?></td>
 							</tr>
+							<?php 
+								}
+								if($User['time_completed_date'] != "0000-00-00 00:00:00") {
+							?>
 							<tr>
 								<td>Time Discrimination</td>
 								<td><?php echo $User['time_completed_date']; ?></td>
 								<td><?php echo $User['time_score'];?></td>
 								<td><?php echo $User['time_certile'];?></td>
 							</tr>
-							<tr>
-								<td>Tonal Discrimination</td>
-								<td><?php echo $User['tonal_completed_date']; ?></td>
-								<td><?php //echo $User['tonal_score'];?></td>
-								<td><?php //echo $User['tonal_certile'];?></td>
-							</tr>
+								<?php } ?>
 						</tbody>
 					</table>
 				</div>

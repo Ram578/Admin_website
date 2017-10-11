@@ -105,16 +105,18 @@ html, body {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
+	padding:2em;
 }
-table {
+#scorestable table {
     border-collapse: collapse;
 }
 
-table, td, th {
-    border: 1px solid black;
+#scorestable table, #scorestable td, #scorestable th {
+   
 	text-align: center;	
-	padding:12px;
+	padding:1em;
 }
+
 .footer {
 	background-color:#3f51b5;
 	height:10vh;
@@ -123,16 +125,11 @@ table, td, th {
 	background-color:#3f51b5;
 	color:#fff;
 }
-#testname {
-	background-color:#FF0000;
-}
 #TesingButton {
 	background-color:#FF0000;
 }
 
-#testname:hover, #testname:active {
-    box-shadow: 5px 5px 5px #000000;
-}
 #TesingButton:hover, #TesingButton:active {
-    box-shadow: 5px 5px 5px #000000;
+    box-shadow: 3px 3px 3px #000000;
 }
+
