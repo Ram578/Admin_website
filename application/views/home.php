@@ -36,14 +36,14 @@
 											<!-- <option value="tonal">Tonal Memory</option> -->
 										</select>
 									</div>
-									<div class="col_full form-group" style="padding:1em;">
+									<div class="col_full form-group radio-btns" style="padding:2px;">
 										<div class="row">
-											 <div class="col-sm-4">
+											 <div class="col-sm-6">
 												<label class="radio-inline" id="selectedLabel">
 													<input type="radio" id="userslist" value="userslist" name="table_type" checked="checked">Users List
 												</label>
 											</div>
-											<div class="col-sm-4" id="radioselect">
+											<div class="col-sm-6" id="radioselect">
 												<label class="radio-inline"  id="selectedLabel">
 													<input type="radio" id="testresult" name="table_type" value="test_result">Test Result
 												</label>
@@ -51,7 +51,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" id="TesingButton" class="btn btn-primary btn-block">Submit</button>
+										<button type="submit" class="btn btn-primary btn-block home-btn">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -62,15 +62,20 @@
 									<div class="col_full form-group">
 										<label for="sleAge" id="selectedLabel">File Number : </label>
 										<input type="text" id="filenumber" class="form-control" name="filenumber" autocomplete="false" required />
+										<div class="message" style="color:red; text-align:center;">
+										<?php
+											echo $this->session->flashdata('Errors');
+										?>
+										</div>
 									</div>
-									<div class="col_full form-group" style="padding:1em;">
+									<div class="col_full form-group radio-btns">
 										<div class="row">
-											 <div class="col-sm-4">
+											 <div class="col-sm-6">
 												<label class="radio-inline" id="selectedLabel">
 													<input type="radio" id="scores" name="test_type" value="scores" checked="checked">Scores
 												</label>	
 											</div>
-											<div class="col-sm-4">
+											<div class="col-sm-6">
 												<label class="radio-inline" id="selectedLabel">	
 													<input type="radio" id="radioselect" name="test_type" value="responses">Responses
 												</label>
@@ -78,7 +83,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" id="TesingButton" class="btn btn-primary btn-block">Submit</button>
+										<button type="submit" class="btn btn-primary btn-block home-btn">Submit</button>
 									</div>
 								</div>
 							</form>

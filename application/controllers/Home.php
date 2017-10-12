@@ -58,18 +58,31 @@ class Home extends CI_Controller {
 	
 	function user_total_results() 
 	{
+		//load model
+		$this->load->model('adminmodel');
+		
 		$filenumber = trim($_POST['filenumber']);
 		$test_type = $_POST['test_type'];
 		
+		$get_user = $this->adminmodel->check_user($filenumber);
+		
 		if($filenumber != "")
 		{
-			if($test_type == 'scores') 
-			{
-				redirect('scores?file_num='.$filenumber, 'refresh');
-			}
+			if ($get_user) {
+			 
+				if($test_type == 'scores') 
+				{
+					redirect('scores?file_num='.$filenumber, 'refresh');
+				}
+				else
+				{
+					redirect('responses?file_num='.$filenumber, 'refresh');
+				}
+			} 
 			else
 			{
-				redirect('responses?file_num='.$filenumber, 'refresh');
+				
+				redirect('home', 'refresh');
 			}
 		} 
 		else {

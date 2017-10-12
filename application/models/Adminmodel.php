@@ -57,6 +57,23 @@ class Adminmodel extends CI_Model
 			}
 		}
 	}
+	
+	function check_user($file_num)
+	{
+		$strQuery = 'SELECT * FROM users WHERE filenumber="'.$file_num.'"';
+
+		$objQuery = $this->db->query($strQuery);
+
+		if($objQuery->num_rows() > 0)
+		{
+			return 1;
+		} 
+		else 
+		{
+			$this->session->set_flashdata('Errors', 'File not found.');
+			return 0;
+		}
+	}
 
 	function FetchUsers($type)
 	{

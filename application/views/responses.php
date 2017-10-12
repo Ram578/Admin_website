@@ -22,7 +22,7 @@
 				</div>
 				<div class="UserListView">
 					<table width="100%" cellspacing="0" cellpadding="0" id="usersTestResultList" class="table table-responsive table-striped">
-						<thead>
+						<thead style="border-top: 1px solid #ddd;">
 							<tr>
 								<th>Test Name</th>
 								<th>File Number</th>

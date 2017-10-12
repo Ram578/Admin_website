@@ -65,16 +65,6 @@ html, body {
 	width: 70%;
 	margin: auto;
 }
-/* 
-.imgLogo {
-	/*display: none;
-	content: url('../../resources/img/aims_logo.jpg');
-	width:200px; 
-	height:150px;
-	margin:0em 0em 3em 2em;
-	-webkit-print-color-adjust: exact;
-}
-*/
 .btns-scores .btn { 
 	width:150px;  
 	/* min-width:inherit;  */
@@ -111,25 +101,34 @@ html, body {
     border-collapse: collapse;
 }
 
-#scorestable table, #scorestable td, #scorestable th {
-   
+#scorestable table,
+#scorestable td,
+#scorestable th {
+	border: 1px solid black;
 	text-align: center;	
 	padding:1em;
 }
-
 .footer {
 	background-color:#3f51b5;
+	border-top: 1px solid #101010;
 	height:10vh;
 }
 .navbar-fixed-top {
 	background-color:#3f51b5;
 	color:#fff;
 }
-#TesingButton {
+.radio-btns {
+	margin: 2em 0px;
+}
+.home-btn {
 	background-color:#FF0000;
+	border-color:#FF0000;
 }
-
-#TesingButton:hover, #TesingButton:active {
+.home-btn:hover,
+.home-btn:active,
+.home-btn:focus,
+.home-btn:active:focus {
     box-shadow: 3px 3px 3px #000000;
+	background-color:#FF0000;
+	border-color:#FF0000;
 }
-
