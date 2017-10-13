@@ -35,6 +35,7 @@
 						<div><b>First Name: </b><?php echo $User['firstname']; ?></div>
 						<div><b>Last Name: </b><?php echo $User['lastname']; ?></div>
 						<div><b>File Number:</b> <?php echo $User['filenumber']; ?></div>
+						<div><b>Gender:</b> <?php echo $User['gender']; ?></div>
 						<div><b>Age:</b> <?php echo $User['age']; ?></div>
 					</div>
 					<table cellspacing="0" cellpadding="10" class="score-table" id="scorestable" style="padding:5em;">

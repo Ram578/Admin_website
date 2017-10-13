@@ -109,26 +109,38 @@ html, body {
 	padding:1em;
 }
 .footer {
-	background-color:#3f51b5;
+	/* background-color:#3f51b5; */
+	background-color:#062e54;
 	border-top: 1px solid #101010;
 	height:10vh;
 }
 .navbar-fixed-top {
-	background-color:#3f51b5;
+	/* background-color:#3f51b5; */
+	background-color:#062e54;
 	color:#fff;
 }
 .radio-btns {
 	margin: 2em 0px;
 }
 .home-btn {
-	background-color:#FF0000;
-	border-color:#FF0000;
+	background-color:#931f25;
+	border-color:#931f25;
+	/* background-color:#FF0000;
+	border-color:#FF0000; */
 }
 .home-btn:hover,
 .home-btn:active,
 .home-btn:focus,
 .home-btn:active:focus {
-    box-shadow: 3px 3px 3px #000000;
-	background-color:#FF0000;
-	border-color:#FF0000;
+	box-shadow: 3px 3px 3px #000000;
+	background-color:#931f25;
+	border-color:#931f25;
+	/* background-color:#FF0000;
+	border-color:#FF0000; */
+}
+.ScoresListView h2 {
+	color: rgb(7, 22, 115) !important;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: serif;
 }

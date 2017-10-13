@@ -1,7 +1,7 @@
 @media print {
 	body {
 		height: 80%;
-		font-size: 30px;
+		font-size: 25px;
 		-webkit-print-color-adjust:exact;
 	}
 	.ScoresListView {
@@ -13,14 +13,17 @@
 	} 
 	.scores-logo h2 {
 		color: rgb(7, 22, 115) !important;
-		font-size: 30px;
+		font-size: 35px;
+		font-weight: bold;
+		font-family: serif;
 		-webkit-print-color-adjust: exact;
 	}
 	.imgLogo {
 		display: block;
 	}
 	table thead tr.table-headings { 
-		background-color: rgb(7, 22, 115) !important;
+		/* background-color: rgb(7, 22, 115) !important; */
+		background-color: #4267b2 !important;
 		-webkit-print-color-adjust: exact;
 	} 
 	table thead tr th { 
