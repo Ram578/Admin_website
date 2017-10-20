@@ -33,7 +33,7 @@
 										<select class="form-control"  id="select" name="application">
 											<option value="pitch">Pitch Discrimination</option>
 											<option value="time">Time Disrimination</option>
-											<!-- <option value="tonal">Tonal Memory</option> -->
+											<option value="tonal">Tonal Memory</option>
 										</select>
 									</div>
 									<div class="col_full form-group radio-btns" style="padding:2px;">

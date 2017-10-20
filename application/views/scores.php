@@ -65,6 +65,15 @@
 								<td><?php echo $User['time_score'];?></td>
 								<td><?php echo $User['time_certile'];?></td>
 							</tr>
+							<?php } 
+								if($User['tonal_completed_date'] != "0000-00-00 00:00:00") {
+							?>
+							<tr>
+								<td>Time Discrimination</td>
+								<td><?php echo $User['tonal_completed_date']; ?></td>
+								<td><?php echo $User['tonal_score'];?></td>
+								<td><?php echo $User['tonal_certile'];?></td>
+							</tr>
 								<?php } ?>
 						</tbody>
 					</table>

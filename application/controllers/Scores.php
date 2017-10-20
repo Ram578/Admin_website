@@ -24,6 +24,10 @@ class Scores extends CI_Controller {
 		$intTimeScore = $this->adminmodel->FetchUserResult($arrData['User']['id'], "time");
 		$arrData['User']['time_score'] = $intTimeScore;
 		$arrData['User']['time_certile'] = $this->adminmodel->FetchCertileWRT($intTimeScore, $arrData['User']['age'], $arrData['User']['gender'], "time");
+		
+		$intTimeScore = $this->adminmodel->FetchUserResult($arrData['User']['id'], "tonal");
+		$arrData['User']['tonal_score'] = $intTimeScore;
+		$arrData['User']['tonal_certile'] = $this->adminmodel->FetchCertileWRT($intTimeScore, $arrData['User']['age'], $arrData['User']['gender'], "tonal");
 				
 		$this->load->view('scores', $arrData); 
 	   
@@ -60,6 +64,8 @@ class Scores extends CI_Controller {
 			unset($value['app_type']);
 		}
 		
+		// var_dump($arrData['Users']);
+		// die;
 		// Enable to download this file
 		$filename = "UserList.csv";
 		 

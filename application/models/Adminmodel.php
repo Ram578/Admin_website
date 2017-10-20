@@ -79,15 +79,15 @@ class Adminmodel extends CI_Model
 	{
 		if($type == "pitch")
 		{
-			$strQuery = 'SELECT * FROM users WHERE pitch_completed_date <> "0000-00-00 00:00:00.000000" ORDER BY id DESC';
+			$strQuery = 'SELECT * FROM users WHERE pitch_completed_date <> "0000-00-00 00:00:00" ORDER BY id DESC';
 		}
 		else if($type == "time")
 		{
-			$strQuery = 'SELECT * FROM users WHERE time_completed_date <> "0000-00-00 00:00:00.000000" ORDER BY id DESC';
+			$strQuery = 'SELECT * FROM users WHERE time_completed_date <> "0000-00-00 00:00:00" ORDER BY id DESC';
 		}
 		else if ($type == "tonal")
 		{
-			$strQuery = 'SELECT * FROM users WHERE tonal_completed_date <> "0000-00-00 00:00:00.000000" ORDER BY id DESC';
+			$strQuery = 'SELECT * FROM users WHERE tonal_completed_date <> "0000-00-00 00:00:00" ORDER BY id DESC';
 		}
 
 		$objQuery = $this->db->query($strQuery);
@@ -169,7 +169,7 @@ class Adminmodel extends CI_Model
 		} else if($type == "time") {
 			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM time_user_answers ua INNER JOIN time_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "test" AND userid = '.$id_user.' ORDER BY q.serial_number';
 		} else if($type == "tonal") {
-			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM tonal_user_answers ua INNER JOIN tonal_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "test" AND userid = '.$id_user.' ORDER BY q.serial_number';
+			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM tonal_user_answers ua INNER JOIN tonal_questions q ON q.id = ua.`questionid` WHERE userid = '.$id_user.' ORDER BY q.serial_number';
 		}
 
 		$objQuery = $this->db->query($strQuery);
@@ -196,7 +196,7 @@ class Adminmodel extends CI_Model
 		}
 		else if($type == "tonal") 
 		{
-			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM tonal_user_answers ua INNER JOIN tonal_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "practice" AND userid = '.$id_user;
+			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM tonal_user_answers ua INNER JOIN tonal_questions q ON q.id = ua.`questionid` WHERE userid = '.$id_user;
 		}
 
 		$objQuery = $this->db->query($strQuery);
@@ -228,7 +228,7 @@ class Adminmodel extends CI_Model
 	
 	function fetch_pitch_user($file_num)
 	{
-		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,pitch_completed_date as completeddate,active,pitch_status as status FROM users WHERE pitch_completed_date <> "0000-00-00 00:00:00.000000" AND filenumber="'.$file_num.'"';
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,pitch_completed_date as completeddate,active,pitch_status as status FROM users WHERE pitch_completed_date <> "0000-00-00 00:00:00" AND filenumber="'.$file_num.'"';
 		// $strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,pitch_completed_date as completeddate,active,pitch_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
@@ -238,7 +238,7 @@ class Adminmodel extends CI_Model
 	
 	function fetch_time_user($file_num)
 	{
-		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,time_completed_date as completeddate,active,time_status as status FROM users WHERE time_completed_date <> "0000-00-00 00:00:00.000000" AND filenumber="'.$file_num.'"';
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,time_completed_date as completeddate,active,time_status as status FROM users WHERE time_completed_date <> "0000-00-00 00:00:00" AND filenumber="'.$file_num.'"';
 		// $strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,time_completed_date as completeddate,active,time_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
