@@ -83,7 +83,7 @@ class Responses extends CI_Controller {
 				}
 			} else {
 				for($i=0; $i<7; $i++) {
-					$value['Practice '.$i] = "-";
+					$value['Practice '.$i] = "NA";
 				}
 			}
 			
