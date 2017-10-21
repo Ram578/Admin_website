@@ -23,7 +23,7 @@ class Usertestresult extends CI_Controller {
 		}
 		else if($application_type == "tonal") 
 		{
-			$arrData['app_title'] = "Tonal Discrimination";
+			$arrData['app_title'] = "Tonal Memory";
 		}
 		
 		$arrData['application_type'] = $application_type;
@@ -49,8 +49,16 @@ class Usertestresult extends CI_Controller {
 		$arrResult = $this->adminmodel->FetchTestResult($type);
 
 		$arrTemp = array();
-
-		$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Score', 'Certile', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7');
+		
+		if($type != "tonal") 
+		{
+			$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Score', 'Certile', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7');
+		}
+		else 
+		{
+			$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Score', 'Certile');
+		}
+		
 		
 		foreach ($arrResult as $key => &$value) 
 		{
@@ -72,40 +80,38 @@ class Usertestresult extends CI_Controller {
 			{
 				$value['status'] =  $value['time_status'];
 			}
-			else if($type == "tonal")
+			if($type != "tonal") 
 			{
-				$value['status'] =  $value['tonal_status'];
-			}
-			
-			if(count($value['practice_result']) > 0)
-			{
-				if($value['status'] == 1) {
-					$practiceintQt = 1;
-					foreach ($value['practice_result'] as $key => $qt) 
-					{
-						$value['Practice '.$practiceintQt] = $qt['optionid'];
-						$practiceintQt++;
-					}
-					
-					$value['Practice 3'] = '0';
-					$value['Practice 4'] = '0';
-					$value['Practice 5'] = '0';
-					$value['Practice 6'] = '0';
-					$value['Practice 7'] = '0';
-					
-				} 
-				elseif($value['status'] == 2)
+				if(count($value['practice_result']) > 0)
 				{
-					$value['Practice 1'] = '0';
-					$value['Practice 2'] = '0';
-					$practiceintQt = 3;
-					foreach ($value['practice_result'] as $key => $qt) 
+					if($value['status'] == 1) {
+						$practiceintQt = 1;
+						foreach ($value['practice_result'] as $key => $qt) 
+						{
+							$value['Practice '.$practiceintQt] = $qt['optionid'];
+							$practiceintQt++;
+						}
+						
+						$value['Practice 3'] = '0';
+						$value['Practice 4'] = '0';
+						$value['Practice 5'] = '0';
+						$value['Practice 6'] = '0';
+						$value['Practice 7'] = '0';
+						
+					} 
+					elseif($value['status'] == 2)
 					{
-						$value['Practice '.$practiceintQt] = $qt['optionid'];
-						$practiceintQt++;
+						$value['Practice 1'] = '0';
+						$value['Practice 2'] = '0';
+						$practiceintQt = 3;
+						foreach ($value['practice_result'] as $key => $qt) 
+						{
+							$value['Practice '.$practiceintQt] = $qt['optionid'];
+							$practiceintQt++;
+						}
 					}
+					
 				}
-				
 			}
 			
 			$intQt = 1;

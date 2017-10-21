@@ -194,19 +194,19 @@ class Adminmodel extends CI_Model
 		{
 			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM time_user_answers ua INNER JOIN time_questions q ON q.id = ua.`questionid` WHERE q.questiontype = "practice" AND userid = '.$id_user;
 		}
-		else if($type == "tonal") 
-		{
-			$strQuery = 'SELECT ua.`questionid`, ua.`optionid`, q.`answer`, q.includeinscoring FROM tonal_user_answers ua INNER JOIN tonal_questions q ON q.id = ua.`questionid` WHERE userid = '.$id_user;
-		}
-
-		$objQuery = $this->db->query($strQuery);
-
-		if($objQuery->num_rows() > 0)
-		{
-			return $objQuery->result_array();
-		}
-		else
-		{
+		
+		if($type != "tonal") {
+			$objQuery = $this->db->query($strQuery);
+			
+			if($objQuery->num_rows() > 0)
+			{
+				return $objQuery->result_array();
+			}
+			else
+			{
+				return array();
+			}
+		} else {
 			return array();
 		}
 	}
@@ -229,7 +229,6 @@ class Adminmodel extends CI_Model
 	function fetch_pitch_user($file_num)
 	{
 		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,pitch_completed_date as completeddate,active,pitch_status as status FROM users WHERE pitch_completed_date <> "0000-00-00 00:00:00" AND filenumber="'.$file_num.'"';
-		// $strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,pitch_completed_date as completeddate,active,pitch_status as status FROM users WHERE filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
 
@@ -239,7 +238,15 @@ class Adminmodel extends CI_Model
 	function fetch_time_user($file_num)
 	{
 		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,time_completed_date as completeddate,active,time_status as status FROM users WHERE time_completed_date <> "0000-00-00 00:00:00" AND filenumber="'.$file_num.'"';
-		// $strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,time_completed_date as completeddate,active,time_status as status FROM users WHERE filenumber="'.$file_num.'"';
+
+		$objQuery = $this->db->query($strQuery);
+
+		return $objQuery->row_array();
+	}
+	
+	function fetch_tonal_user($file_num)
+	{
+		$strQuery = 'SELECT id,firstname,lastname,age,gender,filenumber,addeddate,tonal_completed_date as completeddate,active,tonal_status as status FROM users WHERE tonal_completed_date <> "0000-00-00 00:00:00" AND filenumber="'.$file_num.'"';
 
 		$objQuery = $this->db->query($strQuery);
 
@@ -262,18 +269,22 @@ class Adminmodel extends CI_Model
 			$timeArrUser['type'] = "Time Discrimination";
 			$timeArrUser['app_type'] = "time";
 		}
-		/*
-		$tonalArrUser = $this->fetch_time_user($file_num);
-		$tonalArrUser['type'] = "Tonal Memory";
-		$tonalArrUser['app_type'] = "time";
-		*/
 		
-		// array_push($arrUser, $pitchArrUser, $timeArrUser);
+		$tonalArrUser = $this->fetch_tonal_user($file_num);
+		if($tonalArrUser !== null) {
+			$tonalArrUser['type'] = "Tonal Memory";
+			$tonalArrUser['app_type'] = "tonal";
+		}
+		
+		// array_push($arrUser, $pitchArrUser, $timeArrUser, $tonalArrUser);
 		if($pitchArrUser !== null) {
 			array_push($arrUser, $pitchArrUser);
 		}
 		if($timeArrUser !== null) {
 			array_push($arrUser, $timeArrUser);
+		}
+		if($tonalArrUser !== null) {
+			array_push($arrUser, $tonalArrUser);
 		}
 		
 		return $arrUser;
@@ -283,9 +294,8 @@ class Adminmodel extends CI_Model
 	function fetch_user_test_result($file_num)
 	{
 		$arrUser = array();
+		
 		$pitchArrUser = $this->fetch_pitch_user($file_num);
-		// var_dump($pitchArrUser);
-		// die;
 		if($pitchArrUser !== null) {
 			$pitchArrUser['type'] = "Pitch Discrimination";
 			$pitchArrUser['app_type'] = "pitch";
@@ -301,13 +311,13 @@ class Adminmodel extends CI_Model
 			$timeArrUser['practice_result'] = $this->_userPracticeResults($timeArrUser['id'], "time");
 		}
 		
-		/*
-		$tonalArrUser = $this->fetch_time_user($file_num);
-		$tonalArrUser['type'] = "Tonal Memory";
-		$tonalArrUser['app_type'] = "time";
-		$tonalArrUser['test_result'] = $this->_userResults($tonalArrUser['id'], "time");
-		$tonalArrUser['practice_result'] = $this->_userPracticeResults($tonalArrUser['id'], "time");
-		*/
+		$tonalArrUser = $this->fetch_tonal_user($file_num);
+		if($tonalArrUser !== null) {
+			$tonalArrUser['type'] = "Tonal Memory";
+			$tonalArrUser['app_type'] = "tonal";
+			$tonalArrUser['test_result'] = $this->_userResults($tonalArrUser['id'], "tonal");
+			$tonalArrUser['practice_result'] = $this->_userPracticeResults($tonalArrUser['id'], "tonal");
+		}
 		
 		// array_push($arrUser, $pitchArrUser, $timeArrUser);
 		if($pitchArrUser !== null) {
@@ -315,6 +325,9 @@ class Adminmodel extends CI_Model
 		}
 		if($timeArrUser !== null) {
 			array_push($arrUser, $timeArrUser);
+		}
+		if($tonalArrUser !== null) {
+			array_push($arrUser, $tonalArrUser);
 		}
 		
 		return $arrUser;

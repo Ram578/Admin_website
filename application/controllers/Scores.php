@@ -64,8 +64,6 @@ class Scores extends CI_Controller {
 			unset($value['app_type']);
 		}
 		
-		// var_dump($arrData['Users']);
-		// die;
 		// Enable to download this file
 		$filename = "UserList.csv";
 		 

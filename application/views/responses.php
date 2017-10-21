@@ -64,7 +64,7 @@
 											<td width="10%">Points</td>
 											<?php
 												$intCorrectAnswer = 0;
-												for($intCtr = 0; $intCtr< sizeof($value['test_result']); $intCtr++){
+												for($intCtr = 0; $intCtr < sizeof($value['test_result']); $intCtr++){
 											?>
 											<td width="2.3%">
 												<?php
@@ -81,6 +81,7 @@
 											<?php } ?>
 										</tr>
 									</table>
+									<?php if($value['app_type'] != "tonal") { ?>
 									<table width="100%" cellspacing="0" cellpadding="0" class="table table-bordered">
 										<tr>
 											<td width="10%">Practice Responses</td>
@@ -127,6 +128,7 @@
 											?> 
 										</tr>
 									</table>
+									<?php } ?>
 									<table width="100%" cellpadding="0" cellspacing="0">
 										<tr>
 											<td align="right" style="padding:10px;">Item Score : <strong><?=$intCorrectAnswer;?> (<?=sizeof($value['test_result']);?> questions)</strong></td>

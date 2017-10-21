@@ -84,6 +84,7 @@
 											<?php } ?>
 										</tr>
 									</table>
+									<?php if($application_type != "tonal")  { ?>
 									<table width="100%" cellspacing="0" cellpadding="0" class="table table-bordered">
 										<tr>
 											<?php 
@@ -94,10 +95,6 @@
 												else if($application_type == "time") 
 												{
 													$value['status'] = $value['time_status'];
-												}
-												else if($application_type == "tonal") 
-												{
-													$value['status'] = $value['tonal_status'];
 												}
 											?>
 											<td width="10%">Practice Responses</td>
@@ -144,6 +141,7 @@
 											?> 
 										</tr>
 									</table>
+									<?php } ?>
 									<table width="100%" cellpadding="0" cellspacing="0">
 										<tr>
 											<td align="right" style="padding:10px;">Item Score : <strong><?=$intCorrectAnswer;?> (<?=sizeof($value['test_result']);?> questions)</strong></td>

@@ -25,7 +25,7 @@ class Responses extends CI_Controller {
 
 			$value['certile'] = $this->adminmodel->FetchCertileWRT($intScore, $value['age'], $value['gender'], $value['app_type']);
 		}
-	    
+		
 		$this->load->view('responses', $arrData); 
 		
 	}
@@ -51,35 +51,40 @@ class Responses extends CI_Controller {
 		
 		foreach ($arrResult as $key => &$value) 
 		{
-			if(count($value['practice_result']) > 0)
-			{
-				if($value['status'] == 1) {
-					$practiceintQt = 1;
-					foreach ($value['practice_result'] as $key => $qt) 
-					{
-						$value['Practice '.$practiceintQt] = $qt['optionid'];
-						$practiceintQt++;
-					}
-					
-					$value['Practice 3'] = '0';
-					$value['Practice 4'] = '0';
-					$value['Practice 5'] = '0';
-					$value['Practice 6'] = '0';
-					$value['Practice 7'] = '0';
-					
-				} 
-				elseif($value['status'] == 2)
+			if($value['app_type'] != "tonal") {
+				if(count($value['practice_result']) > 0)
 				{
-					$value['Practice 1'] = '0';
-					$value['Practice 2'] = '0';
-					$practiceintQt = 3;
-					foreach ($value['practice_result'] as $key => $qt) 
+					if($value['status'] == 1) {
+						$practiceintQt = 1;
+						foreach ($value['practice_result'] as $key => $qt) 
+						{
+							$value['Practice '.$practiceintQt] = $qt['optionid'];
+							$practiceintQt++;
+						}
+						
+						$value['Practice 3'] = '0';
+						$value['Practice 4'] = '0';
+						$value['Practice 5'] = '0';
+						$value['Practice 6'] = '0';
+						$value['Practice 7'] = '0';
+						
+					} 
+					elseif($value['status'] == 2)
 					{
-						$value['Practice '.$practiceintQt] = $qt['optionid'];
-						$practiceintQt++;
+						$value['Practice 1'] = '0';
+						$value['Practice 2'] = '0';
+						$practiceintQt = 3;
+						foreach ($value['practice_result'] as $key => $qt) 
+						{
+							$value['Practice '.$practiceintQt] = $qt['optionid'];
+							$practiceintQt++;
+						}
 					}
 				}
-				
+			} else {
+				for($i=0; $i<7; $i++) {
+					$value['Practice '.$i] = "-";
+				}
 			}
 			
 			$intQt = 1;

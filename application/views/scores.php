@@ -69,7 +69,7 @@
 								if($User['tonal_completed_date'] != "0000-00-00 00:00:00") {
 							?>
 							<tr>
-								<td>Time Discrimination</td>
+								<td>Tonal Memory</td>
 								<td><?php echo $User['tonal_completed_date']; ?></td>
 								<td><?php echo $User['tonal_score'];?></td>
 								<td><?php echo $User['tonal_certile'];?></td>
@@ -82,6 +82,6 @@
 		<!-- Body Content ends here -->
 		<!-- Admin Dashboard ends here -->
 		<!-- JS file  -->
-<?php include 'admin_footer.php'; ?>
-
 		<script type="text/javascript" src="<?=base_url();?>resources/js/scores.js"></script>
+		
+<?php include 'admin_footer.php'; ?>

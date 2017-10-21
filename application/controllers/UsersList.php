@@ -25,7 +25,7 @@ class Userslist extends CI_Controller {
 			}
 			else if($application_type == "tonal") 
 			{
-				$arrData['app_title'] = "Tonal Discrimination";
+				$arrData['app_title'] = "Tonal Memory";
 			}
 						
 			$arrData['application_type'] = $application_type;
@@ -74,7 +74,7 @@ class Userslist extends CI_Controller {
 			}
 			else if($type == "tonal")
 			{
-				$value['status'] =  $value['tonal_status'];
+				//$value['status'] =  $value['tonal_status'];
 				unset($value['pitch_completed_date']);
 				unset($value['time_completed_date']);
 			}
@@ -82,19 +82,20 @@ class Userslist extends CI_Controller {
 			unset($value['pitch_status']);
 			unset($value['time_status']);
 			unset($value['tonal_status']);
-			
-			// Check the Status & then assign the value
-			if($value['status'] == 1) 
-			{
-				$value['status'] = "Next";
-			}
-			else if($value['status'] == 2)
-			{
-				$value['status'] = "More Examples";
-			} 
-			else
-			{
-				$value['status'] = "";
+			if($type != "tonal") {
+				// Check the Status & then assign the value
+				if($value['status'] == 1) 
+				{
+					$value['status'] = "Next";
+				}
+				else if($value['status'] == 2)
+				{
+					$value['status'] = "More Examples";
+				} 
+				else
+				{
+					$value['status'] = "";
+				}
 			}
 
 			$value['score'] = $intScore;
@@ -109,8 +110,13 @@ class Userslist extends CI_Controller {
         header("Content-Type: text/csv");
          
         $display = fopen("php://output", 'w');
-         
-        $arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Created Date', 'Completed Date', 'Active', 'Status', 'Score', 'Certile');
+        
+		if($type != "tonal") {
+			$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Created Date', 'Completed Date', 'Active', 'Status', 'Score', 'Certile');
+		} else {
+			$arrHeaders = array('ID', 'First Name', 'Last Name', 'Age', 'Gender', 'File Number', 'Created Date', 'Completed Date', 'Active', 'Score', 'Certile');
+		}
+        
         
         fputcsv($display, array_values($arrHeaders), ",", '"');
        
